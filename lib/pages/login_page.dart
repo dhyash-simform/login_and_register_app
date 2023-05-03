@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:login_register_app/components/text_field_widget.dart';
-import 'package:login_register_app/constant/app_constant.dart';
-import 'package:login_register_app/constant/app_page_route.dart';
-import 'package:login_register_app/extension.dart';
-import 'package:login_register_app/utils.dart';
+import 'package:login_register_app/values/app_routes.dart';
+
+import '../components/app_text_form_field.dart';
+import '../resources/vectors.dart';
+import '../utils/extensions.dart';
+import '../values/app_colors.dart';
+import '../values/app_constants.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       'Sign in to your Account',
                       style: Theme.of(context).textTheme.bodySmall,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -67,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextFormFieldWidget(
+                    AppTextFormField(
                       labelText: 'Email',
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
@@ -77,13 +79,13 @@ class _LoginPageState extends State<LoginPage> {
                       validator: (value) {
                         return value!.isEmpty
                             ? 'Please, Enter Email Address'
-                            : RegExp(AppConstants.emailRegex).hasMatch(value)
+                            : AppConstants.emailRegex.hasMatch(value)
                                 ? null
                                 : 'Invalid Email Address';
                       },
                       controller: emailController,
                     ),
-                    TextFormFieldWidget(
+                    AppTextFormField(
                       labelText: 'Password',
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
@@ -93,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                       validator: (value) {
                         return value!.isEmpty
                             ? 'Please, Enter Password'
-                            : RegExp(AppConstants.passwordRegex).hasMatch(value)
+                            : AppConstants.passwordRegex.hasMatch(value)
                                 ? null
                                 : 'Invalid Password';
                       },
@@ -127,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         'Forgot Password?',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: AppConstants.primaryColor,
+                              color: AppColors.primaryColor,
                               fontWeight: FontWeight.bold,
                             ),
                       ),
@@ -195,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: () {},
                             style: Theme.of(context).outlinedButtonTheme.style,
                             icon: SvgPicture.asset(
-                              SvgIcons.googleIcon,
+                              Vectors.googleIcon,
                               width: 14,
                             ),
                             label: const Text(
@@ -212,7 +214,7 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: () {},
                             style: Theme.of(context).outlinedButtonTheme.style,
                             icon: SvgPicture.asset(
-                              SvgIcons.facebookIcon,
+                              Vectors.facebookIcon,
                               width: 14,
                             ),
                             label: const Text(
@@ -222,7 +224,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -240,14 +242,12 @@ class _LoginPageState extends State<LoginPage> {
                           ?.copyWith(color: Colors.black),
                     ),
                     TextButton(
-                      onPressed: () {
-                        context.navigateAndPushName(AppPageRoute.registerPage);
-                      },
+                      onPressed: () => AppRoutes.registerScreen.pushName(),
                       style: Theme.of(context).textButtonTheme.style,
                       child: Text(
                         'Register',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: AppConstants.primaryColor,
+                              color: AppColors.primaryColor,
                               fontWeight: FontWeight.bold,
                             ),
                       ),

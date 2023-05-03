@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:login_register_app/constant/app_theme.dart';
-import 'package:login_register_app/pages/login_page.dart';
-import 'package:login_register_app/pages/register_page.dart';
+
+import 'values/app_theme.dart';
+import 'pages/login_page.dart';
+import 'pages/register_page.dart';
+import 'values/app_constants.dart';
+import 'values/app_routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +14,9 @@ void main() {
       statusBarIconBrightness: Brightness.light,
     ),
   );
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp],
+  ).then(
     (_) => runApp(
       const MyApp(),
     ),
@@ -24,15 +29,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Theme.of(context);
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login and Register UI',
       theme: AppTheme.themeData,
-      initialRoute: '/login',
+      initialRoute: AppRoutes.loginScreen,
+      navigatorKey: AppConstants.navigationKey,
       routes: {
-        '/login': (context) => const LoginPage(),
-        '/register': (context) => const RegisterPage()
+        AppRoutes.loginScreen: (context) => const LoginPage(),
+        AppRoutes.registerScreen: (context) => const RegisterPage(),
       },
     );
   }
