@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
-  FocusNode confirmFocusNode = FocusNode();
+  // FocusNode confirmFocusNode = FocusNode();
 
   bool isObscure = true;
   bool isConfirmPasswordObscure = true;
@@ -138,28 +138,35 @@ class _RegisterPageState extends State<RegisterPage> {
                       },
                       controller: passwordController,
                       obscureText: isObscure,
-                      onEditingComplete: () {
-                        FocusScope.of(context).unfocus();
-                        FocusScope.of(context).requestFocus(confirmFocusNode);
-                      },
+                      // onEditingComplete: () {
+                      //   FocusScope.of(context).unfocus();
+                      //   FocusScope.of(context).requestFocus(confirmFocusNode);
+                      // },
                       suffixIcon: Padding(
                         padding: const EdgeInsets.only(right: 15),
-                        child: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              isObscure = !isObscure;
-                            });
-                          },
-                          style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all(
-                              const Size(48, 48),
+                        child: Focus(
+                          /// If false, will disable focus for all of this node's descendants.
+                          descendantsAreFocusable: false,
+
+                          /// If false, will make this widget's descendants un-traversable.
+                          // descendantsAreTraversable: false,
+                          child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isObscure = !isObscure;
+                              });
+                            },
+                            style: ButtonStyle(
+                              minimumSize: MaterialStateProperty.all(
+                                const Size(48, 48),
+                              ),
                             ),
-                          ),
-                          icon: Icon(
-                            isObscure
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                            color: Colors.black,
+                            icon: Icon(
+                              isObscure
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ),
@@ -168,7 +175,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       labelText: 'Confirm Password',
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
-                      focusNode: confirmFocusNode,
+                      // focusNode: confirmFocusNode,
                       onChanged: (value) {
                         _formKey.currentState?.validate();
                       },
@@ -186,23 +193,30 @@ class _RegisterPageState extends State<RegisterPage> {
                       obscureText: isConfirmPasswordObscure,
                       suffixIcon: Padding(
                         padding: const EdgeInsets.only(right: 15),
-                        child: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              isConfirmPasswordObscure =
-                                  !isConfirmPasswordObscure;
-                            });
-                          },
-                          style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all(
-                              const Size(48, 48),
+                        child: Focus(
+                          /// If false, will disable focus for all of this node's descendants.
+                          descendantsAreFocusable: false,
+
+                          /// If false, will make this widget's descendants un-traversable.
+                          // descendantsAreTraversable: false,
+                          child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isConfirmPasswordObscure =
+                                    !isConfirmPasswordObscure;
+                              });
+                            },
+                            style: ButtonStyle(
+                              minimumSize: MaterialStateProperty.all(
+                                const Size(48, 48),
+                              ),
                             ),
-                          ),
-                          icon: Icon(
-                            isConfirmPasswordObscure
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                            color: Colors.black,
+                            icon: Icon(
+                              isConfirmPasswordObscure
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ),
