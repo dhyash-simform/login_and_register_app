@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     Theme.of(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Login and Register UI',
+      title: 'Login and Register UI++',
       theme: AppTheme.themeData,
       initialRoute: AppRoutes.loginScreen,
       navigatorKey: AppConstants.navigationKey,
