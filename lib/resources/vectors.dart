@@ -1,4 +1,8 @@
+part of 'resources.dart';
+
 class Vectors {
-  static const String googleIcon = 'assets/icons/google.svg';
-  static const String facebookIcon = 'assets/icons/facebook.svg';
+  Vectors._();
+
+  static const String facebook = 'assets/vectors/facebook.svg';
+  static const String google = 'assets/vectors/google.svg';
 }

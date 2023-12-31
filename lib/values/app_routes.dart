@@ -1,4 +1,6 @@
 class AppRoutes {
-  static const String loginScreen = '/login';
-  static const String registerScreen = '/register';
+  const AppRoutes._();
+
+  static const String login = 'login';
+  static const String register = 'register';
 }
