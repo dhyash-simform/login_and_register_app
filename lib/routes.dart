@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_register_app/screens/home_screen.dart';
 
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
@@ -22,10 +23,13 @@ class Routes {
 
     switch (settings.name) {
       case AppRoutes.login:
-        return getRoute(widget: const LoginPage());
+        return getRoute(widget: const LoginScreen());
 
       case AppRoutes.register:
-        return getRoute(widget: const RegisterPage());
+        return getRoute(widget: const RegisterScreen());
+
+      case AppRoutes.home:
+        return getRoute(widget: const HomeScreen());
 
       /// An invalid route. User shouldn't see this,
       /// it's for debugging purpose only.
